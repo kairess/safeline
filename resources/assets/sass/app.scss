@@ -1,9 +1,7 @@
-
-// Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
-// Variables
-@import "variables";
-
-// Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import url(//fonts.googleapis.com/earlyaccess/notosanskr.css);
+body {
+    font-family: "Roboto", 'Noto Sans KR', sans-serif;
+}
+.source-sans {
+    font-family: 'Slabo 27px', serif;
+}

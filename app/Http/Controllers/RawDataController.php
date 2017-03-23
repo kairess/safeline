@@ -15,7 +15,7 @@ class RawDataController extends Controller
     public function index()
     {
         $raw_datas = RawData::latest()->get();
-        return view('raw_data', compact('raw_datas'));
+        return view('raw_data.index', compact('raw_datas'));
     }
 
     /**
@@ -25,7 +25,7 @@ class RawDataController extends Controller
      */
     public function create()
     {
-        //
+        return view('raw_data.create');
     }
 
     /**
@@ -36,7 +36,11 @@ class RawDataController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        RawData::create([
+            'raw_data' => $request->raw_data
+        ]);
+
+        return $request->raw_data;
     }
 
     /**

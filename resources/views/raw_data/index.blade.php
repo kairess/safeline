@@ -20,7 +20,7 @@
             <tr>
                 <td>Alvin</td>
                 <td>{{$raw_data->raw_data}}</td>
-                <td>{{$raw_data->created_at->subHours(9)->diffForHumans()}}</td>
+                <td>{{$raw_data->created_at->diffForHumans()}}</td>
             </tr>
             @endforeach
         </tbody>

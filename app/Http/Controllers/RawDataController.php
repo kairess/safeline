@@ -40,7 +40,8 @@ class RawDataController extends Controller
             'raw_data' => $request->raw_data
         ]);
 
-        return $request->raw_data;
+        return redirect(url('raw_data'));
+        // return $request->raw_data;
     }
 
     /**

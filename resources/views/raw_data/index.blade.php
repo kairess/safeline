@@ -4,6 +4,8 @@
 <div class="col s12 m12">
     <h1>Raw Data</h1>
 
+    <a class="btn btn-primary" href="{{url('raw_data/create')}}" role="button">Create</a>
+
     <table>
         <thead>
             <tr>

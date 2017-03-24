@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\RawData;
 use App\DeviceData;
 use Illuminate\Http\Request;
 
-class RawDataController extends Controller
+class DeviceDataController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class RawDataController extends Controller
      */
     public function index()
     {
-        $device_datas = DeviceData::latest()->get();
-        return view('raw_data.index', compact('device_datas'));
+        //
     }
 
     /**
@@ -26,7 +24,7 @@ class RawDataController extends Controller
      */
     public function create()
     {
-        return view('raw_data.create');
+        //
     }
 
     /**
@@ -37,33 +35,16 @@ class RawDataController extends Controller
      */
     public function store(Request $request)
     {
-        DeviceData::create([
-            'device_id' => $request->device_id,
-            'is_animal' => $request->is_animal,
-            'is_car' => $request->is_car,
-            'temperature' => $request->temperature,
-            'decibel' => $request->decibel,
-            'latitude' => $request->latitude,
-            'longitude' => $request->longitude,
-        ]);
-
-        return redirect(url('raw_data'));
-
-        // RawData::create([
-        //     'raw_data' => $request->raw_data
-        // ]);
-
-        // return redirect(url('raw_data'));
-        // return $request->raw_data;
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\RawData  $rawData
+     * @param  \App\DeviceData  $deviceData
      * @return \Illuminate\Http\Response
      */
-    public function show(RawData $rawData)
+    public function show(DeviceData $deviceData)
     {
         //
     }
@@ -71,10 +52,10 @@ class RawDataController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\RawData  $rawData
+     * @param  \App\DeviceData  $deviceData
      * @return \Illuminate\Http\Response
      */
-    public function edit(RawData $rawData)
+    public function edit(DeviceData $deviceData)
     {
         //
     }
@@ -83,10 +64,10 @@ class RawDataController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\RawData  $rawData
+     * @param  \App\DeviceData  $deviceData
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, RawData $rawData)
+    public function update(Request $request, DeviceData $deviceData)
     {
         //
     }
@@ -94,10 +75,10 @@ class RawDataController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\RawData  $rawData
+     * @param  \App\DeviceData  $deviceData
      * @return \Illuminate\Http\Response
      */
-    public function destroy(RawData $rawData)
+    public function destroy(DeviceData $deviceData)
     {
         //
     }

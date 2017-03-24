@@ -9,18 +9,30 @@
     <table>
         <thead>
             <tr>
-                <th data-field="id">Name</th>
-                <th data-field="name">Item Name</th>
-                <th data-field="price">Item Price</th>
+                <th data-field="id">id</th>
+                <th data-field="device_id">device_id</th>
+                <th data-field="is_animal">is_animal</th>
+                <th data-field="is_car">is_car</th>
+                <th data-field="temperature">temperature</th>
+                <th data-field="decibel">decibel</th>
+                <th data-field="latitude">latitude</th>
+                <th data-field="longitude">longitude</th>
+                <th data-field="created_at">created_at</th>
             </tr>
         </thead>
 
         <tbody>
-            @foreach($raw_datas as $raw_data)
+            @foreach($device_datas as $device_data)
             <tr>
-                <td>Alvin</td>
-                <td>{{$raw_data->raw_data}}</td>
-                <td>{{$raw_data->created_at->diffForHumans()}}</td>
+                <td>{{$device_data->id}}</td>
+                <td>{{$device_data->device_id}}</td>
+                <td>{{$device_data->is_animal}}</td>
+                <td>{{$device_data->is_car}}</td>
+                <td>{{$device_data->temperature}}</td>
+                <td>{{$device_data->decibel}}</td>
+                <td>{{$device_data->latitude}}</td>
+                <td>{{$device_data->longitude}}</td>
+                <td>{{$device_data->created_at->diffForHumans()}}</td>
             </tr>
             @endforeach
         </tbody>

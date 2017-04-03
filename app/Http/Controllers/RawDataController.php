@@ -29,6 +29,45 @@ class RawDataController extends Controller
         return view('raw_data.create');
     }
 
+    public function store_raw(Request $request)
+    {
+        $very_raw_data = file_get_contents("php://input");
+
+        RawData::create([
+            'raw_data' => $very_raw_data
+        ]);
+
+        // is_animal 1
+        // is_car 1
+        // temperature 3
+        // decibel 3
+        // gps 21
+        // device_id 3
+        
+        $animal_array = array_fill(0, 70, "고라니");
+        $animal_array2 = array_fill(70, 10, "사슴");
+        $animal_array3 = array_fill(80, 1, "삵");
+        $animal_array4 = array_fill(81, 9, "곰");
+        $animal_array5 = array_fill(90, 10, "멧돼지");
+        // $animal_array6 = array_fill(90, 10, "사람");
+
+        $animal_array = array_merge($animal_array, $animal_array2, $animal_array3, $animal_array4, $animal_array5);
+        $animal_name = $animal_array[rand(0, 99)];
+        
+        DeviceData::create([
+            'is_animal' => substr($very_raw_data, 0, 1),
+            'is_car' => substr($very_raw_data, 1, 1),
+            'temperature' => substr($very_raw_data, 2, 3),
+            'decibel' => substr($very_raw_data, 5, 3),
+            // 'latitude' => $request->latitude,
+            // 'longitude' => $request->longitude,
+            'animal_name' => $animal_name,
+            'photo' => 'empty'
+        ]);
+
+        return $very_raw_data;
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -45,6 +84,8 @@ class RawDataController extends Controller
             'decibel' => $request->decibel,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude,
+            'animal_name' => $request->animal_name,
+            'photo' => $request->photo
         ]);
 
         return redirect(url('raw_data'));

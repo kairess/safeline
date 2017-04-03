@@ -34,6 +34,14 @@
             <label for="longitude">경도 longitude (21)</label>
             <input type="text" class="form-control" id="longitude" placeholder="127.035411" name="longitude" value="127.035411">
         </div>
+        <div class="form-group">
+            <label for="animal_name">동물이름 animal_name</label>
+            <input type="text" class="form-control" id="animal_name" placeholder="고라니" name="animal_name" value="고라니">
+        </div>
+        <div class="form-group">
+            <label for="photo">사진 경로 photo</label>
+            <input type="text" class="form-control" id="photo" placeholder="sample1.jpg" name="photo" value="sample1.jpg">
+        </div>
         <div class="form-group"> 
             <button type="submit" class="btn btn-primary">Submit</button>
         </div>

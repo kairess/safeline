@@ -4,7 +4,7 @@
 <script src="//www.amcharts.com/lib/3/amcharts.js"></script>
 <script src="//www.amcharts.com/lib/3/serial.js"></script>
 <script src="//www.amcharts.com/lib/3/themes/light.js"></script>
-<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKAG57YPhE9w_R_ZNL1SCCf_BPJDFcx0&libraries=visualization&callback=initMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDOKAG57YPhE9w_R_ZNL1SCCf_BPJDFcx0&libraries=visualization"></script>
 
 <style type="text/css">
 #chartdiv {
@@ -15,6 +15,9 @@
     width: 100%;
     height: 450px;
 }
+.modal.bottom-sheet {
+    max-height: 90%;
+}
 </style>
 
 <div class="col s12 m6">
@@ -24,10 +27,58 @@
     <div id="map"></div>
 </div>
 
+<div class="col s12 m12">
+    <table>
+        <thead>
+            <tr>
+                <th data-field="created_at">시간</th>
+                <th data-field="location">지역</th>
+                <th data-field="animal_name">동물</th>
+                <th data-field="is_crash">사고여부</th>
+                <th data-field="photo_view">사진보기</th>
+                
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach($device_datas as $device_data)
+            <tr>
+                <td>{{$device_data->created_at->diffForHumans()}}</td>
+                <td>구로구 구로동</td>
+                <td>{{$device_data->animal_name}}</td>
+                <td>&times;</td>
+
+                <td>
+                    <a class="modal-trigger waves-effect waves-light" href="#modal1">View</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
+
+<!-- Modal Structure -->
+<div id="modal1" class="modal bottom-sheet">
+    <div class="modal-content">
+        {{-- <h4>Modal Header</h4> --}}
+        <p style="text-align: center;">
+            <img width="70%" src="{{url('photos/1.jpg')}}" />
+        </p>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Close</a>
+    </div>
+</div>
 
 <script type="text/javascript">
+$(function() {
+    $('.modal').modal({
+        ready: function(modal, trigger) {
+            console.log(modal, trigger);
+        }
+    })
+});
 /** Google maps */
-
 var map, heatmap;
 
 function initMap() {
@@ -43,6 +94,8 @@ function initMap() {
     radius: 50
   });
 }
+
+initMap();
 
 // Heatmap data: 500 Points
 function getPoints() {
@@ -73,8 +126,18 @@ function generateChartData() {
     var newDate = new Date( firstDate );
     newDate.setMinutes( newDate.getMinutes() + minute );
 
-    var animals = Math.round( Math.random() * 2 );
-    var cars = Math.round( Math.random() * 2 );
+    var rand_animals = Math.round( Math.random() * 10 );
+    var rand_cars = Math.round( Math.random() * 10 );
+    var animals = 0;
+    var cars = 0;
+
+    if(rand_animals >= 8) {
+        animals = Math.round( Math.random() * 2 );
+    }
+
+    if(rand_cars >= 5) {
+        cars = Math.round( Math.random() * 5 );
+    }
 
     chartData.push( {
       "date": newDate,
@@ -163,14 +226,26 @@ setInterval( function() {
   minute++;
   var newDate = new Date( firstDate );
   newDate.setMinutes( newDate.getMinutes() + minute );
-  var animals = Math.round( Math.random() * 2 );
-  var cars = Math.round( Math.random() * 2 );
+  
+  var rand_animals = Math.round( Math.random() * 10 );
+  var rand_cars = Math.round( Math.random() * 10 );
+  var animals = 0;
+  var cars = 0;
+
+  if(rand_animals >= 8) {
+      animals = Math.round( Math.random() * 2 );
+  }
+
+  if(rand_cars >= 5) {
+      cars = Math.round( Math.random() * 5 );
+  }
+
   chart.dataProvider.push( {
     date: newDate,
     animals: animals,
     cars: cars
   } );
   chart.validateData();
-}, 60000 );
+}, 10000 );
 </script>
 @endsection

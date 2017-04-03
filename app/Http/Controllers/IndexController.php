@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\DeviceData;
 
 class IndexController extends Controller
 {
@@ -13,7 +14,9 @@ class IndexController extends Controller
      */
     public function index()
     {
-        return view('index');
+        $device_datas = DeviceData::latest()->get();
+        
+        return view('index', compact('device_datas'));
     }
 
     /**

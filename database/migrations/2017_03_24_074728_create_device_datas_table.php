@@ -22,6 +22,8 @@ class CreateDeviceDatasTable extends Migration
             $table->integer('decibel')->default(80);
             $table->string('latitude')->default('37.482424');
             $table->string('longitude')->default('127.035411');
+            $table->string('animal_name');
+            $table->string('photo');
             $table->timestamps();
         });
     }

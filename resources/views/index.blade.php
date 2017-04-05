@@ -44,7 +44,7 @@
             @foreach($device_datas as $device_data)
             <tr>
                 <td>{{$device_data->created_at->diffForHumans()}}</td>
-                <td>구로구 구로동</td>
+                <td>서울 서초구 양재동 엘타워</td>
                 <td>{{$device_data->animal_name}}</td>
                 <td>&times;</td>
 
@@ -62,7 +62,7 @@
     <div class="modal-content">
         {{-- <h4>Modal Header</h4> --}}
         <p style="text-align: center;">
-            <img width="70%" src="{{url('photos/1.jpg')}}" />
+            <img width="70%" src="{{url('photos/2.jpg')}}" />
         </p>
     </div>
     <div class="modal-footer">
